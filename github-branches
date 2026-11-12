@@ -1,1 +1,68 @@
+his repository uses a simple branch model to keep the main codebase stable while allowing feature work and fixes to happen safely.
 
+## Main branches
+
+- `main`
+  - Production-ready code
+  - Always deployable
+  - No direct pushes without review
+
+- `develop`
+  - Integration branch for upcoming work
+  - Used for testing combined changes before release
+
+## Supporting branches
+
+- `feature/<short-name>`
+  - Used for new features or improvements
+  - Created from `develop`
+  - Merged back into `develop` through a pull request
+
+- `bugfix/<short-name>`
+  - Used for non-critical fixes
+  - Created from `develop`
+  - Merged back into `develop`
+
+- `hotfix/<short-name>`
+  - Used for urgent production fixes
+  - Created from `main`
+  - Merged back into `main` and `develop`
+
+- `release/<version>`
+  - Used to prepare a release
+  - Created from `develop`
+  - Merged into `main` after testing
+
+## Naming conventions
+
+Use lowercase words separated by hyphens.
+
+Examples:
+- `feature/user-auth`
+- `bugfix/login-error`
+- `hotfix/security-patch`
+- `release/v1.2.0`
+
+## Workflow
+
+1. Create a branch from the correct base branch.
+2. Make small, focused changes.
+3. Open a pull request for review.
+4. Merge only after approval and checks pass.
+5. Delete the branch after it is merged.
+
+## Rules
+
+- Never push directly to `main`
+- Use pull requests for all merges
+- Keep branches short-lived
+- Delete merged branches regularly
+- Write clear commit messages
+- Include issue or ticket references when possible
+
+## Example
+
+```bash
+git checkout develop
+git pull origin develop
+git checkout -b feature/add-login-page
